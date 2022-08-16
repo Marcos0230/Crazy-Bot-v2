@@ -1,0 +1,16 @@
+{
+  "name": "crazy-bot-v2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "LeGarsFou",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.2.0",
+    "fs": "^0.0.1-security",
+    "ws": "^8.8.1"
+  }
+}
