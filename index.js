@@ -1,22 +1,12 @@
-const Discord = require('discord.js');
-const client = new Discord.Client({intents: 3243773});
+const Discord = require('discord.js'); // require le module discord.js
+const intents = new Discord.IntentsBitField(3243773); // crée un nouvel objet intents avec le bitfield de l'intents
+const client = new Discord.Client({intents}); // crée un nouveau client avec l'intents
 
-const token = require('./token.json');
-const config = require('./config.js');
+const token = require('./token.json'); // token.json est un fichier contenant le token du bot
+const config = require('./config.js'); // config.js est un fichier contenant les paramètres du bot
 
-client.login(token.token);
+client.login(token.token); // connecte le bot au serveur Discord
 
 client.on('ready', async () => {
-    console.log(`Logged in as ${client.user.tag}!`);
-});
-
-client.on('message', async message => {
-    if (message.author.bot) return;
-    if (message.content.startsWith(config.prefix)) {
-        const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
-        const command = args.shift().toLowerCase();
-        if (command === 'ping') {
-            message.channel.send('Pong!');
-        }
-    }
+    console.log(`Connexion à ${client.user.tag} réussie ! Aucun problème n'a été détecté.`); // affiche dans la console que le bot est connecté au serveur Discord
 });
