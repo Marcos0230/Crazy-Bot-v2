@@ -1,5 +1,5 @@
 const Discord = require('discord.js'); // require le module discord.js
-const intents = new Discord.IntentsBitField(3243773); // crée un nouvel objet intents avec le bitfield de l'intents
+const intents = new Discord.IntentsBitField(3276799); // crée un nouvel objet intents avec le bitfield de l'intents
 const client = new Discord.Client({intents}); // crée un nouveau client avec l'intents
 const loadCommands = require('./Loader/loadCommands'); // require le fichier loadCommands.js
 
