@@ -24,6 +24,8 @@ client.on('messageCreate', (message) => { // écoute l'évènement messageCreate
         })
     }
 
+    if (message.author.bot) return; // si l'auteur du message est un bot, on sort de la fonction
+
     const evalaccess = ["588381876989853697"] // liste des ID des personnes qui ont accès à la commande eval
     let clean = text => { // fonction qui nettoie le message
         if (typeof text === "string") // si le message est une chaîne de caractères

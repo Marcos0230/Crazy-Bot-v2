@@ -2,6 +2,8 @@ const Discord = require('discord.js'); // require le module discord.js
 const config = require('../config.js'); // config.js est un fichier contenant les paramètres du bot
 
 module.exports = async (client, message) => {
+    if (message.author.bot) return; // si l'auteur du message est un bot, on sort de la fonction
+
     let prefix = config.prefix; // prefix est le prefix du bot
 
     let messageArray = message.content.split(' '); // messageArray contient le message séparé par des espaces
