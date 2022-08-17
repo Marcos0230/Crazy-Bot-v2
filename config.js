@@ -1,3 +1,3 @@
-module.exports = {
-    prefix: 'c.',   // Prefix for commands
+module.exports = { // exporte les paramètres du bot
+    prefix: 'c.',   // prefix du bot
 }
