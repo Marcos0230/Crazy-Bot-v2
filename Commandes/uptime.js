@@ -3,7 +3,6 @@ const Discord = require('discord.js'); // require le module discord.js
 module.exports = { // exporte la commande uptime
     name: 'uptime', // nom de la commande
     description: 'Donne le uptime du bot', // description de la commande
-    category: 'Utilitaire', // catégorie de la commande
     permission: 'Aucune', // permission nécessaire pour exécuter la commande
     dmPermission: true, // permission nécessaire pour exécuter la commande en message privé
 

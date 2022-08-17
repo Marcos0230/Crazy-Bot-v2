@@ -3,7 +3,6 @@ const Discord = require('discord.js'); // require le module discord.js
 module.exports = { // exporte la commande ping
     name: 'ping', // nom de la commande
     description: 'Ping le bot', // description de la commande
-    category: 'Utilitaire', // catégorie de la commande
     permission: 'Aucune', // permission nécessaire pour exécuter la commande
     dmPermission: true, // permission nécessaire pour exécuter la commande en message privé
 
