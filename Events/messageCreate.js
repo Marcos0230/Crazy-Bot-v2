@@ -13,11 +13,11 @@ module.exports = async (client, message) => {
     if(!message.content.startsWith(prefix)) return; // si le message ne commence pas par le prefix, on sort de la fonction
 
     if(!commandName) return message.reply('Vous n\'avez pas entré de commande.'); // si la commande n'est pas entrée, on envoie un message d'erreur
-    let command = require(`../Commandes/${commandName}`)
-    if (!command) {
-        message.reply("Pas de commande renseignée ! / Commande inconnue !") // si la commande n'est pas trouvée, on envoie un message d'erreur
-    } else {
-        command.run(client, message, args); // execute la commande
+    try { // on essaye de charger la commande
+        let command = require(`../Commandes/${commandName}`) // command est la commande chargée
+        command.run(client, message, args) // on exécute la commande
+        console.log(`${message.author.tag} a utilisé la commande ${commandName}`); // on affiche dans la console que la commande a été utilisée
+    } catch (err) { // si la commande n'est pas trouvée
+        message.reply("Pas de commande renseignée ! / Commande inconnue !") // on envoie un message d'erreur
     }
-    console.log(`${message.author.tag} a utilisé la commande ${commandName}`); // on affiche dans la console que la commande a été utilisée
 }
