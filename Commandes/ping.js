@@ -1,12 +1,12 @@
-const Discord = require('discord.js'); // require le module discord.js
+const Discord = require("discord.js");
 
-module.exports = { // exporte la commande ping
-    name: 'ping', // nom de la commande
-    description: 'Ping le bot', // description de la commande
-    permission: 'Aucune', // permission nécessaire pour exécuter la commande
-    dmPermission: true, // permission nécessaire pour exécuter la commande en message privé
+module.exports = {
+    name: "ping",
+    description: "Permet de voir le ping du bot",
+    dmPermission: true,
+    permission: "Aucune",
 
-    async run(client, message) { // execute la commande ping
-        await message.reply('Pong ! 🏓\nLatence : ' + client.ws.ping + 'ms <:XD:770652549895553054>🤙'); // répond à l'utilisateur avec le ping du bot
+    async run(client, message) {
+        await message.reply(`Pong !\n~ ${client.ws.ping}ms`);
     }
 }

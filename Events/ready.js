@@ -1,8 +1,8 @@
-const Discord = require('discord.js'); // require le module discord.js
-const loadSlashCommands = require('../Loader/loadSlashCommands'); // require le fichier loadSlashCommands.js
+const Discord = require("discord.js");
+const loadSlashCommands = require("../Loader/loadSlashCommands.js");
 
-module.exports = async (client) => { // exporte la fonction ready
-    await loadSlashCommands(client); // on charge les commandes slash
+module.exports = async (client) => {
+    await loadSlashCommands(client);
 
-    console.log(`Connexion à ${client.user.tag} réussie ! Aucun problème n'a été détecté.`); // affiche dans la console que le bot est connecté au serveur Discord
+    console.log(`Connecté en tant que ${client.user.tag} ! Aucun problème détecté.\nAu total, ${client.users.cache.size} utilisateurs, dans ${client.channels.cache.size} salons de ${client.guilds.cache.size} serveurs.`);
 }

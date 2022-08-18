@@ -1,10 +1,11 @@
-const fs = require('fs'); // require le module fs
+const Discord = require('discord.js');
+const fs = require('fs');
 
 module.exports = async (client) => {
-    for (const files of fs.readdirSync('./Commandes/').filter(f => f.endsWith(".js"))) {
-        let command = require(`../Commandes/${files}`); // require le fichier command.js
-        if(!command.name || typeof command.name !== "string") throw new TypeError(`${files} n'a pas de nom ou n'est pas un string`); // vérifie que le fichier a un nom et que ce nom est un string
-        await client.commands.set(command.name, command); // ajoute la commande au tableau des commandes du bot
-        console.log(`${files} chargé avec succès !`); // affiche dans la console que le fichier a été chargé avec succès
+    for (const files of fs.readdirSync("./Commandes").filter(f => f.endsWith(".js"))) {
+        let command = require(`../Commandes/${files}`);
+        if (!command.name || typeof command.name !== "string") throw new TypeError(`Le nom de la commande ${files.slice(0, files.length - 3)} n'est pas valide.`);
+        await client.commands.set(command.name, command);
+        console.log(`La commande ${command.name} a été chargée avec succès !`);
     }
 }
