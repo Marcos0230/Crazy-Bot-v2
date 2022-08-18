@@ -3,6 +3,7 @@ const intents = new Discord.IntentsBitField(3276799); // crée un nouvel objet i
 const client = new Discord.Client({intents}); // crée un nouveau client avec l'intents
 const loadCommands = require('./Loader/loadCommands'); // require le fichier loadCommands.js
 const loadEvents = require('./Loader/loadEvents'); // require le fichier loadEvents.js
+const { Client, GatewayIntentBits, ActivityType } = require('discord.js'); // require le module discord.js
 
 client.commands = new Discord.Collection(); // crée un nouveau tableau de commandes
 
@@ -56,3 +57,23 @@ client.on('messageCreate', (message) => { // écoute l'évènement messageCreate
         }
     }
 });
+
+client.on('ready', () => {
+    const statuses = [
+        'mon développeur : 🦄𝐋𝐞𝐆𝐚𝐫𝐬𝐅𝐨𝐮🌈#0230',
+        'mon prefix : c.',
+        'ma version : 2.0.0'
+    ]
+    let i = 0;
+    /*client.user.setPresence({
+        activities: [{ name: `discord.js v14`, type: ActivityType.Watching }],
+        status: 'dnd',
+    });*/
+    setInterval(() => {
+        client.user.setPresence({
+            activities: [{ name: statuses[i], type: ActivityType.Watching }],
+            status: 'online',
+        });
+        i = ++i % statuses.length
+    }, 10000)
+})
