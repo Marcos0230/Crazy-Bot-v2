@@ -22,7 +22,7 @@ module.exports = {
         try {
             let user = await client.users.fetch(args._hoistedOptions[0].value);
             if (!user) {
-                message.reply(`Le membre n'existe pas !`);
+                return message.reply(`Le membre n'existe pas !`);
             }
             let member = await message.guild.members.cache.get(user.id);
 
@@ -32,22 +32,20 @@ module.exports = {
             }
 
             if (message.user.id === user.id) {
-                message.reply(`Vous ne pouvez pas vous bannir vous même !`);
+                return message.reply(`Vous ne pouvez pas vous bannir vous même !`);
             }
             if ((await message.guild.fetchOwner()).id === user.id) {
-                message.reply(`Vous ne pouvez pas bannir le propriétaire du serveur !`);
+                return message.reply(`Vous ne pouvez pas bannir le propriétaire du serveur !`);
             }
             if (member && !member.bannable) {
-                message.reply(`Je ne peux pas bannir ce membre !`);
+                return message.reply(`Je ne peux pas bannir ce membre !`);
             }
             if (member && message.member.roles.highest.comparePositionTo(member.roles.highest) <= 0) {
-                message.reply(`Vous ne pouvez pas bannir ce membre !`);
+                return message.reply(`Vous ne pouvez pas bannir ce membre !`);
             }
             if ((await message.guild.bans.fetch()).get(user.id)) {
-                message.reply(`Ce membre est déjà banni !`);
+                return message.reply(`Ce membre est déjà banni !`);
             }
-
-            await message.guild.bans.create(user.id, {reason: reason});
 
             try {
                 await user.send(`Vous avez été banni du serveur **${message.guild.name}** par **${message.user.tag}** pour la raison suivante : **${reason}**`);
@@ -55,6 +53,8 @@ module.exports = {
                 message.reply(`Le membre n'a pas pu être averti !`);
             }
             await message.reply(`**${message.user}** a banni **${user.tag}** pour la raison suivante : **${reason}**`);
+
+            await message.guild.bans.create(user.id, {reason: reason});
         } catch (error) {
             message.reply(`Le membre n'existe pas !`);
             console.log(error);
