@@ -26,7 +26,7 @@ module.exports = {
             }
             let member = await message.guild.members.cache.get(user.id);
 
-            let reason = args.get("raison").value;
+            let reason = args.getString("raison");
             if (!reason) {
                 reason = "Aucune raison donnée";
             }

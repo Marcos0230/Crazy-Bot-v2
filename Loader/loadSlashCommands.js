@@ -22,5 +22,5 @@ module.exports = async (client) => {
     const rest = new REST({version: "10"}).setToken(client.token); // crée un nouvel objet rest avec la version 10
 
     await rest.put(Routes.applicationCommands(client.user.id), {body: commands}); // met à jour les commandes du bot sur le serveur Discord
-    console.log("Slash commands créées avec succès !"); // affiche un message de succès
+    console.log("Slash Commands créées avec succès !"); // affiche un message de succès
 }
