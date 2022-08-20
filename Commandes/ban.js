@@ -23,6 +23,7 @@ module.exports = {
     async run(client, message, args) {
 
         let user = await client.users.fetch(args._hoistedOptions[0].value);
+        console.log(user);
         const no_member = new EmbedBuilder()
             .setColor("#ff0000")
             .setTitle("Erreur")
@@ -97,13 +98,7 @@ module.exports = {
         }
 
         try {
-            const you_are_banned = new EmbedBuilder()
-                .setColor("#ffff00")
-                .setTitle("Bannissement")
-                .setDescription(`Vous avez été banni du serveur **${message.guild.name}** par **${message.user.tag}** pour la raison suivante : **${reason}**`)
-                .setFooter({iconURL: client.user.displayAvatarURL({dynamic: true})})
-                .setTimestamp()
-            await user.send({embeds: [you_are_banned]});
+            await user.send(`Bannissement :\n\nVous avez été banni du serveur **${message.guild.name}** par **${message.user.tag}** pour la raison suivante : **${reason}**`);
         } catch (err) {
             const no_dm = new EmbedBuilder()
                 .setColor("#ffff00")
