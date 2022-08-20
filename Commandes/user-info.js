@@ -66,7 +66,7 @@ module.exports = {
                 inline: true
             })
             .setTimestamp(new Date())
-            .setFooter({text: `Commande effectuée par ${message.author.username}`, iconURL: message.author.avatarURL({dynamic: true})})
+            .setFooter({text: "Commande : uptime", iconURL: client.user.displayAvatarURL({dynamic: true})})
 
 
         await message.reply({embeds: [userInfoEmbed]});
