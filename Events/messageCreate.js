@@ -10,10 +10,10 @@ module.exports = async (client, message) => {
 
     if (!message.content.startsWith(config.prefix)) return;
 
-    let command = require(`../Commandes/${commandName}`);
-    if (!command) {
-        message.reply("Cette commande n'existe pas !");
+    try { // on essaye de charger la commande
+        let command = require(`../Commandes/${commandName}`) // command est la commande chargée
+        command.run(client, message, args) // on exécute la commande
+    } catch (err) { // si la commande n'est pas trouvée
+        message.reply("Pas de commande renseignée ! / Commande inconnue !") // on envoie un message d'erreur
     }
-
-    command.run(client, message, args);
 }
