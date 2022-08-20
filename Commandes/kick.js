@@ -27,7 +27,7 @@ module.exports = {
             .setColor("#ff0000")
             .setTitle("Erreur")
             .setDescription("Ce membre n'existe pas !")
-            .setFooter({text: `Commande effectuée par ${message.author.username}`, iconURL: message.author.avatarURL({dynamic: true})})
+            .setFooter({text: "Commande : kick", iconURL: client.user.displayAvatarURL({dynamic: true})})
             .setTimestamp()
             .setThumbnail(config.error_gif);
         if (!user) {
@@ -48,7 +48,7 @@ module.exports = {
             .setColor("#ff0000")
             .setTitle("Erreur")
             .setDescription("Vous ne pouvez pas vous kick vous même !")
-            .setFooter({text: `Commande effectuée par ${message.author.username}`, iconURL: message.author.avatarURL({dynamic: true})})
+            .setFooter({text: "Commande : kick", iconURL: client.user.displayAvatarURL({dynamic: true})})
             .setTimestamp()
             .setThumbnail(config.error_gif);
         if (message.user.id === user.id) {
@@ -59,7 +59,7 @@ module.exports = {
             .setColor("#ff0000")
             .setTitle("Erreur")
             .setDescription("Vous ne pouvez pas kick le propriétaire du serveur !")
-            .setFooter({text: `Commande effectuée par ${message.author.username}`, iconURL: message.author.avatarURL({dynamic: true})})
+            .setFooter({text: "Commande : kick", iconURL: client.user.displayAvatarURL({dynamic: true})})
             .setTimestamp()
             .setThumbnail(config.error_gif);
         if ((await message.guild.fetchOwner()).id === user.id) {
@@ -70,7 +70,7 @@ module.exports = {
             .setColor("#ff0000")
             .setTitle("Erreur")
             .setDescription("Je ne peux pas kick ce membre !")
-            .setFooter({text: `Commande effectuée par ${message.author.username}`, iconURL: message.author.avatarURL({dynamic: true})})
+            .setFooter({text: "Commande : kick", iconURL: client.user.displayAvatarURL({dynamic: true})})
             .setTimestamp()
             .setThumbnail(config.error_gif);
         if (member && !member.kickable) {
@@ -81,7 +81,7 @@ module.exports = {
             .setColor("#ff0000")
             .setTitle("Erreur")
             .setDescription("Vous ne pouvez pas kick ce membre !")
-            .setFooter({text: `Commande effectuée par ${message.author.username}`, iconURL: message.author.avatarURL({dynamic: true})})
+            .setFooter({text: "Commande : kick", iconURL: client.user.displayAvatarURL({dynamic: true})})
             .setTimestamp()
             .setThumbnail(config.error_gif);
         if (member && message.member.roles.highest.comparePositionTo(member.roles.highest) <= 0) {
@@ -95,7 +95,7 @@ module.exports = {
                 .setColor("#ffff00")
                 .setTitle("Information")
                 .setDescription(`**${message.user}** a kick **${user.tag}** pour la raison suivante : **${reason}**\n\nLe membre n'a pas pu être informé de son expulsion !`)
-                .setFooter({text: `Commande effectuée par ${message.author.username}`, iconURL: message.author.avatarURL({dynamic: true})})
+                .setFooter({text: "Commande : kick", iconURL: client.user.displayAvatarURL({dynamic: true})})
                 .setTimestamp()
                 .setThumbnail(config.error_gif);
             message.reply({embeds: [no_dm]});

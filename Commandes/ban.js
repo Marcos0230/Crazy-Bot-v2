@@ -28,7 +28,7 @@ module.exports = {
             .setColor("#ff0000")
             .setTitle("Erreur")
             .setDescription("Ce membre n'existe pas !")
-            .setFooter({text: `Commande effectuée par ${message.author.username}`, iconURL: message.author.avatarURL({dynamic: true})})
+            .setFooter({text: "Commande : ban", iconURL: client.user.displayAvatarURL({dynamic: true})})
             .setTimestamp()
             .setThumbnail(config.error_gif);
         if (!user) {
@@ -46,7 +46,7 @@ module.exports = {
             .setColor("#ff0000")
             .setTitle("Erreur")
             .setDescription("Vous ne pouvez pas vous bannir vous même !")
-            .setFooter({text: `Commande effectuée par ${message.author.username}`, iconURL: message.author.avatarURL({dynamic: true})})
+            .setFooter({text: "Commande : ban", iconURL: client.user.displayAvatarURL({dynamic: true})})
             .setTimestamp()
             .setThumbnail(config.error_gif);
         if (message.user.id === user.id) {
@@ -57,7 +57,7 @@ module.exports = {
             .setColor("#ff0000")
             .setTitle("Erreur")
             .setDescription("Vous ne pouvez pas bannir le propriétaire du serveur !")
-            .setFooter({text: `Commande effectuée par ${message.author.username}`, iconURL: message.author.avatarURL({dynamic: true})})
+            .setFooter({text: "Commande : ban", iconURL: client.user.displayAvatarURL({dynamic: true})})
             .setTimestamp()
             .setThumbnail(config.error_gif);
         if ((await message.guild.fetchOwner()).id === user.id) {
@@ -68,7 +68,7 @@ module.exports = {
             .setColor("#ff0000")
             .setTitle("Erreur")
             .setDescription("Je ne peux pas bannir ce membre !")
-            .setFooter({text: `Commande effectuée par ${message.author.username}`, iconURL: message.author.avatarURL({dynamic: true})})
+            .setFooter({text: "Commande : ban", iconURL: client.user.displayAvatarURL({dynamic: true})})
             .setTimestamp()
             .setThumbnail(config.error_gif);
         if (member && !member.bannable) {
@@ -79,7 +79,7 @@ module.exports = {
             .setColor("#ff0000")
             .setTitle("Erreur")
             .setDescription("Vous ne pouvez pas bannir ce membre !")
-            .setFooter({text: `Commande effectuée par ${message.author.username}`, iconURL: message.author.avatarURL({dynamic: true})})
+            .setFooter({text: "Commande : ban", iconURL: client.user.displayAvatarURL({dynamic: true})})
             .setTimestamp()
             .setThumbnail(config.error_gif);
         if (member && message.member.roles.highest.comparePositionTo(member.roles.highest) <= 0) {
@@ -90,7 +90,7 @@ module.exports = {
             .setColor("#ff0000")
             .setTitle("Erreur")
             .setDescription("Ce membre est déjà banni !")
-            .setFooter({text: `Commande effectuée par ${message.author.username}`, iconURL: message.author.avatarURL({dynamic: true})})
+            .setFooter({text: "Commande : ban", iconURL: client.user.displayAvatarURL({dynamic: true})})
             .setTimestamp()
             .setThumbnail(config.error_gif);
         if ((await message.guild.bans.fetch()).get(user.id)) {
@@ -104,7 +104,7 @@ module.exports = {
                 .setColor("#ffff00")
                 .setTitle("Information")
                 .setDescription(`**${message.user}** a banni **${user.tag}** pour la raison suivante : **${reason}**\n\nLe membre n'a pas pu être informé de son bannissement !`)
-                .setFooter({text: `Commande effectuée par ${message.author.username}`, iconURL: message.author.avatarURL({dynamic: true})})
+                .setFooter({text: "Commande : ban", iconURL: client.user.displayAvatarURL({dynamic: true})})
                 .setTimestamp()
                 .setThumbnail(config.error_gif);
             await message.reply({embeds: [no_dm]});
@@ -114,7 +114,7 @@ module.exports = {
             .setColor("#00ff00")
             .setTitle("Bannissement")
             .setDescription(`**${message.user}** a banni **${user.tag}** pour la raison suivante : **${reason}**`)
-            .setFooter({text: `Commande effectuée par ${message.author.username}`, iconURL: message.author.avatarURL({dynamic: true})})
+            .setFooter({text: "Commande : ban", iconURL: client.user.displayAvatarURL({dynamic: true})})
             .setTimestamp()
         await message.reply({embeds: [ban_confirmation]});
 

@@ -10,10 +10,11 @@ module.exports = {
     async run(client, message) {
         const pingEmbed = new EmbedBuilder()
             .setTitle("Ping")
-            .setDescription(`Pong ! Le ping du bot est de ${client.ws.ping}ms`)
-            .setColor("RANDOM")
+            .setDescription(`Pong ! 🏓\n\nLe ping du bot est de \`${client.ws.ping}ms\``)
+            .setColor("Random")
             .setTimestamp()
-            .setFooter({text: `Commande effectuée par ${message.author.username}`, iconURL: message.author.avatarURL({dynamic: true})});
+            .setThumbnail("https://c.tenor.com/UnFx-k_lSckAAAAM/amalie-steiness.gif")
+            .setFooter({text: "Commande : ping", iconURL: client.user.displayAvatarURL({dynamic: true})});
         await message.reply({embeds: [pingEmbed]});
     }
 }
