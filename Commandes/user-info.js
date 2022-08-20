@@ -51,7 +51,7 @@ module.exports = {
             })
             .addFields({
                 name: " :newspaper:  Date de création du compte",
-                value: `<t:${Math.floor(user.createdAt / 1000)}:F>\n`,
+                value: `<t:${Math.floor(user.createdAt / 1000)}:F>`,
                 inline: true
             })
             .addFields({
