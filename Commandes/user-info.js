@@ -15,10 +15,10 @@ module.exports = {
         },
     ],
 
-    async run(bot, message, args) {
+    async run(client, message, args) {
 
 
-        let user = await bot.users.fetch(args._hoistedOptions[0].value);
+        let user = await client.users.fetch(args._hoistedOptions[0].value);
         if (!user) {
             message.reply(`Le membre n'existe pas !`);
         }
@@ -66,7 +66,7 @@ module.exports = {
                 inline: true
             })
             .setTimestamp(new Date())
-            .setFooter({text: bot.user.username, iconURL: bot.user.displayAvatarURL({dynamic: true})})
+            .setFooter({text: `Commande effectuée par ${message.author.username}`, iconURL: message.author.avatarURL({dynamic: true})})
 
 
         await message.reply({embeds: [userInfoEmbed]});
