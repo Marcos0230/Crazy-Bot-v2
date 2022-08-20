@@ -62,7 +62,7 @@ module.exports = {
             })
             .addFields({
                 name: `<a:status:1010518874829103195>  Statut`,
-                value: `**${member ? member.presence ? member.presence.status : "Hors-ligne" : "Inconnu"}**`,
+                value: `${member ? member.presence ? member.presence.status : "Hors-ligne" : "Inconnu"}`,
                 inline: true
             })
             .setTimestamp(new Date())
