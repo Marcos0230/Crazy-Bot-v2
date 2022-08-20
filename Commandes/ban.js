@@ -23,7 +23,7 @@ module.exports = {
     async run(client, message, args) {
 
         let user = await client.users.fetch(args._hoistedOptions[0].value);
-        console.log(user);
+
         const no_member = new EmbedBuilder()
             .setColor("#ff0000")
             .setTitle("Erreur")

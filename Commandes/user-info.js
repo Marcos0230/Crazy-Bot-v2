@@ -1,16 +1,17 @@
 const Discord = require("discord.js")
 const {EmbedBuilder} = require('discord.js');
+const config = require("../config.json");
 
 module.exports = {
     name: "user-info",
-    description: "permet de savoir les informations de la personne mentioner !",
+    description: "Permet de savoir les informations de la personne mentioner !",
     permission: "Aucune",
-    dm: false,
+    dmPermission: false,
     options: [
         {
             type: "user",
             name: "member",
-            description: "le membre a mentioner",
+            description: "Le membre a mentioner",
             required: true
         },
     ],
@@ -19,12 +20,20 @@ module.exports = {
 
 
         let user = await client.users.fetch(args._hoistedOptions[0].value);
+
+        const no_member = new EmbedBuilder()
+            .setColor("#ff0000")
+            .setTitle("Erreur")
+            .setDescription("Ce membre n'existe pas !")
+            .setFooter({text: "Commande : user-info", iconURL: client.user.displayAvatarURL({dynamic: true})})
+            .setTimestamp()
+            .setThumbnail(config.error_gif);
         if (!user) {
-            message.reply(`Le membre n'existe pas !`);
+            message.reply({embeds: [no_member]});
         }
         let member = await message.guild.members.cache.get(user.id);
         if (!member) {
-            message.reply(`Le membre n'existe pas !`);
+            message.reply({embeds: [no_member]});
         }
 
         const userInfoEmbed = new EmbedBuilder()
