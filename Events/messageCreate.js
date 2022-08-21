@@ -2,6 +2,8 @@ const Discord = require('discord.js');
 const config = require('../config.json');
 
 module.exports = async (client, message) => {
+    if (message.author.bot) return;
+
     let prefix = config.prefix;
 
     let messageArray = message.content.split(" ");
