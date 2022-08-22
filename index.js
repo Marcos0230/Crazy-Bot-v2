@@ -30,7 +30,7 @@ client.on('ready', () => {
         });
         i = ++i % statuses.length
     }, 10000)
-})
+});
 
 client.on('messageCreate', (message) => { // écoute l'évènement messageCreate
     if (message.content.includes(token.token)) { // si le message contient le token du bot
