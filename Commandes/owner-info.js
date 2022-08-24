@@ -15,6 +15,7 @@ module.exports = {
             .setDescription(`Voici les infos sur le créateur du bot :`)
             .setColor("Random")
             .setTimestamp()
+            .setImage("https://cdn.discordapp.com/attachments/1009151685144354826/1011688756690034758/discord-banner-4.gif")
             .setThumbnail(owner.displayAvatarURL({dynamic: true}))
             .setFooter({text: "Commande : owner-info", iconURL: client.user.displayAvatarURL({dynamic: true})})
             .addFields({
