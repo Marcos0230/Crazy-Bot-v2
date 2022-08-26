@@ -4,26 +4,26 @@ const config = require("../config.json");
 const ms = require("ms");
 
 module.exports = {
-    name: "timeout",
-    description: "Permet de timeout un membre",
+    name: "mute",
+    description: "Permet de mute un membre",
     dmPermission: false,
     permission: Discord.PermissionFlagsBits.ModerateMembers,
     options: [
         {
         type: "user",
         name: "membre",
-        description: "Le membre à timeout",
+        description: "Le membre à mute",
         required: true
         }, {
         type: "string",
         name: "temps",
-        description: "Le temps de timeout",
+        description: "Le temps de mute",
         required: true
         },
         {
         type: "string",
         name: "raison",
-        description: "La raison du timeout",
+        description: "La raison du mute",
         required: false
         }
     ],
@@ -34,7 +34,7 @@ module.exports = {
             .setColor("#ff0000")
             .setTitle("Erreur")
             .setDescription("Ce membre n'existe pas !")
-            .setFooter({text: "Commande : timeout", iconURL: client.user.displayAvatarURL({dynamic: true})})
+            .setFooter({text: "Commande : mute", iconURL: client.user.displayAvatarURL({dynamic: true})})
             .setTimestamp()
             .setThumbnail(config.error_gif);
         if (!user) {
@@ -51,7 +51,7 @@ module.exports = {
             .setColor("#ff0000")
             .setTitle("Erreur")
             .setDescription("Vous n'avez pas entré de temps ou le temps indiqué n'est pas au bon format (heure : h, minute : m, etc.) !")
-            .setFooter({text: "Commande : timeout", iconURL: client.user.displayAvatarURL({dynamic: true})})
+            .setFooter({text: "Commande : mute", iconURL: client.user.displayAvatarURL({dynamic: true})})
             .setTimestamp()
             .setThumbnail(config.error_gif);
         if (!time) {
@@ -65,8 +65,8 @@ module.exports = {
         const too_long_time = new EmbedBuilder()
             .setColor("#ff0000")
             .setTitle("Erreur")
-            .setDescription("Le temps de timeout est trop long (il ne peut pas dépasser deux (2) semaines/28 jours) !")
-            .setFooter({text: "Commande : timeout", iconURL: client.user.displayAvatarURL({dynamic: true})})
+            .setDescription("Le temps de mute est trop long (il ne peut pas dépasser deux (2) semaines/28 jours) !")
+            .setFooter({text: "Commande : mute", iconURL: client.user.displayAvatarURL({dynamic: true})})
             .setTimestamp()
             .setThumbnail(config.error_gif);
         if(ms(time) > 86400000) {
@@ -78,81 +78,81 @@ module.exports = {
             reason = "Aucune raison donnée";
         }
 
-        const timeout_yourself = new EmbedBuilder()
+        const mute_yourself = new EmbedBuilder()
             .setColor("#ff0000")
             .setTitle("Erreur")
-            .setDescription("Vous ne pouvez pas vous timeout vous même !")
-            .setFooter({text: "Commande : timeout", iconURL: client.user.displayAvatarURL({dynamic: true})})
+            .setDescription("Vous ne pouvez pas vous mute vous même !")
+            .setFooter({text: "Commande : mute", iconURL: client.user.displayAvatarURL({dynamic: true})})
             .setTimestamp()
             .setThumbnail(config.error_gif);
         if (message.user.id === user.id) {
-            return message.reply({embeds: [timeout_yourself]});
+            return message.reply({embeds: [mute_yourself]});
         }
 
-        const timeout_owner = new EmbedBuilder()
+        const mute_owner = new EmbedBuilder()
             .setColor("#ff0000")
             .setTitle("Erreur")
-            .setDescription("Vous ne pouvez pas timeout le propriétaire du serveur !")
-            .setFooter({text: "Commande : timeout", iconURL: client.user.displayAvatarURL({dynamic: true})})
+            .setDescription("Vous ne pouvez pas mute le propriétaire du serveur !")
+            .setFooter({text: "Commande : mute", iconURL: client.user.displayAvatarURL({dynamic: true})})
             .setTimestamp()
             .setThumbnail(config.error_gif);
         if ((await message.guild.fetchOwner()).id === user.id) {
-            return message.reply({embeds: [timeout_owner]});
+            return message.reply({embeds: [mute_owner]});
         }
 
-        const i_cannot_timeout = new EmbedBuilder()
+        const i_cannot_mute = new EmbedBuilder()
             .setColor("#ff0000")
             .setTitle("Erreur")
-            .setDescription("Je ne peux pas timeout ce membre !")
-            .setFooter({text: "Commande : timeout", iconURL: client.user.displayAvatarURL({dynamic: true})})
+            .setDescription("Je ne peux pas mute ce membre !")
+            .setFooter({text: "Commande : mute", iconURL: client.user.displayAvatarURL({dynamic: true})})
             .setTimestamp()
             .setThumbnail(config.error_gif);
         if (member && !member.moderatable) {
-            return message.reply({embeds: [i_cannot_timeout]});
+            return message.reply({embeds: [i_cannot_mute]});
         }
 
-        const you_cannot_timeout = new EmbedBuilder()
+        const you_cannot_mute = new EmbedBuilder()
             .setColor("#ff0000")
             .setTitle("Erreur")
-            .setDescription("Vous ne pouvez pas timeout ce membre !")
-            .setFooter({text: "Commande : timeout", iconURL: client.user.displayAvatarURL({dynamic: true})})
+            .setDescription("Vous ne pouvez pas mute ce membre !")
+            .setFooter({text: "Commande : mute", iconURL: client.user.displayAvatarURL({dynamic: true})})
             .setTimestamp()
             .setThumbnail(config.error_gif);
         if (member && message.member.roles.highest.comparePositionTo(member.roles.highest) <= 0) {
-            return message.reply({embeds: [you_cannot_timeout]});
+            return message.reply({embeds: [you_cannot_mute]});
         }
 
-        const already_timeout = new EmbedBuilder()
+        const already_mute = new EmbedBuilder()
             .setColor("#ff0000")
             .setTitle("Erreur")
-            .setDescription("Ce membre est déjà timeout !")
-            .setFooter({text: "Commande : timeout", iconURL: client.user.displayAvatarURL({dynamic: true})})
+            .setDescription("Ce membre est déjà mute !")
+            .setFooter({text: "Commande : mute", iconURL: client.user.displayAvatarURL({dynamic: true})})
             .setTimestamp()
             .setThumbnail(config.error_gif);
         if (member.isCommunicationDisabled()) {
-            return message.reply({embeds: [already_timeout]});
+            return message.reply({embeds: [already_mute]});
         }
 
         try {
-            await user.send(`Vous avez été timeout du serveur **${message.guild.name}** par **${message.user.tag}** pour la raison suivante : **${reason}**`);
+            await user.send(`Vous avez été mute du serveur **${message.guild.name}** par **${message.user.tag}** pendant **${time}** pour la raison suivante : **${reason}**`);
         } catch (err) {
             const no_dm = new EmbedBuilder()
                 .setColor("#ffff00")
                 .setTitle("Information")
-                .setDescription(`**${message.user}** a timeout **${user.tag}** pendant **${time}** pour la raison suivante : **${reason}**\n\nLe membre n'a pas pu être informé de son timeout !`)
+                .setDescription(`**${message.user}** a mute **${user.tag}** pendant **${time}** pour la raison suivante : **${reason}**\n\nLe membre n'a pas pu être informé de son mute !`)
                 .setFooter({text: `Commande effectuée par ${message.author.username}`, iconURL: message.author.avatarURL({dynamic: true})})
                 .setTimestamp()
                 .setThumbnail(config.error_gif);
-            message.reply({embeds: [no_dm]});
-            return member.kick(reason)
+            await message.reply({embeds: [no_dm]});
+            return await member.timeout(ms(time), reason);
         }
-        const timeout_confirmation = new EmbedBuilder()
+        const mute_confirmation = new EmbedBuilder()
             .setColor("#00ff00")
-            .setTitle("Timeout")
-            .setDescription(`**${message.user}** a timeout **${user.tag}** pendant **${time}** pour la raison suivante : **${reason}**`)
-            .setFooter({text: "Commande : timeout", iconURL: client.user.displayAvatarURL({dynamic: true})})
+            .setTitle("mute")
+            .setDescription(`**${message.user}** a mute **${user.tag}** pendant **${time}** pour la raison suivante : **${reason}**`)
+            .setFooter({text: "Commande : mute", iconURL: client.user.displayAvatarURL({dynamic: true})})
             .setTimestamp()
-        await message.reply({embeds: [timeout_confirmation]});
+        await message.reply({embeds: [mute_confirmation]});
 
         await member.timeout(ms(time), reason);
     }
