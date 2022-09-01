@@ -13,35 +13,76 @@ module.exports = {
             name: "nombre",
             description: "Le nombre de messages à supprimer",
             required: true
+        }, {
+            type: "channel",
+            name: "channel",
+            description: "Le salon où on veut supprimer les messages",
+            required: false
         }
     ],
 
     async run(client, message, args) {
-        let count = args.getNumber("nombre");
+        let number = args.getNumber("nombre");
 
         const no_number = new EmbedBuilder()
             .setColor("#ff0000")
             .setTitle("Erreur")
-            .setDescription("Veuillez indiquer un nombre de messages à supprimer !")
+            .setDescription("Vous devez entrer un nombre de messages à supprimer !")
             .setFooter({text: "Commande : clear", iconURL: client.user.displayAvatarURL({dynamic: true})})
             .setTimestamp()
             .setThumbnail(config.error_gif);
-        if (!/\d+/.test(count)) {
+        if (!number) {
             return message.reply({embeds: [no_number]});
         }
 
-        const invalid_number = new EmbedBuilder()
+        const wrong_number = new EmbedBuilder()
             .setColor("#ff0000")
             .setTitle("Erreur")
-            .setDescription("Le nombre de messages à supprimer doit être compris entre 1 et 99.")
+            .setDescription("Vous devez entrer un nombre entre `0` et `100` inclus !")
             .setFooter({text: "Commande : clear", iconURL: client.user.displayAvatarURL({dynamic: true})})
             .setTimestamp()
             .setThumbnail(config.error_gif);
-        if (count < 1 || count > 99) {
-            return message.reply({embeds: [invalid_number]});
+        if (parseInt(number) <= 0 || parseInt(number) > 100) {
+            message.reply({embeds: [wrong_number]});
         }
 
-        const {size} = await message.channel.bulkDelete(count + 1, true);
-        message.channel.send(`${size - 1} messages ont été supprimés !`).then(sent => sent.delete({timeout: 10000}))
+        let channel = args.getChannel("channel");
+
+        if (!channel) {
+            channel = message.channel;
+        }
+
+        const wrong_channel = new EmbedBuilder()
+            .setColor("#ff0000")
+            .setTitle("Erreur")
+            .setDescription("Vous ne pouvez pas supprimer des messages dans un salon qui n'existe pas !")
+            .setFooter({text: "Commande : clear", iconURL: client.user.displayAvatarURL({dynamic: true})})
+            .setTimestamp()
+            .setThumbnail(config.error_gif);
+        if (channel.id !== message.channel.id && !message.guild.channels.cache.get(channel.id)) {
+            message.reply({embeds: [wrong_channel]});
+        }
+
+        try {
+            let messages = await channel.bulkDelete(parseInt(number));
+
+            await message.reply({content: `${messages.size} messages ont été supprimés dans le salon ${channel} !`, ephemeral: true});
+        } catch (error) {
+            let messages = [...(await channel.messages.fetch()).values()].filter(async m => m.createdAt >= 1209600000)
+            const no_message = new EmbedBuilder()
+                .setColor("#ff0000")
+                .setTitle("Erreur")
+                .setDescription("Aucun message ne peut être supprimé car ils datent de 14j ou plus !")
+                .setFooter({text: "Commande : clear", iconURL: client.user.displayAvatarURL({dynamic: true})})
+                .setTimestamp()
+                .setThumbnail(config.error_gif);
+            if (message.length <= 0 ) {
+                return message.reply({embeds: [no_message]});
+            }
+
+            await channel.bulkDelete(messages);
+
+            await message.reply({content: `${messages.size} messages ont été supprimés ! Les messages datant de 14j ou plus n'ont pas pu être supprimés.`, ephemeral: true});
+        }
     }
 }
