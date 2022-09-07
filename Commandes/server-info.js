@@ -8,6 +8,7 @@ module.exports = {
     permission: "Aucune",
     dmPermission: false,
     category: "Utilitaire",
+    syntax: "server-info",
 
     async run(client, message, args) {
         const serverInfoEmbed = new EmbedBuilder()

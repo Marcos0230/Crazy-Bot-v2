@@ -7,6 +7,7 @@ module.exports = {
     dmPermission: true,
     permission: "Aucune",
     category: "Utilitaire",
+    syntax: "owner-info",
 
     async run(client, message) {
         const owner = client.users.cache.get("588381876989853697");

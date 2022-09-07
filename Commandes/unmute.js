@@ -9,6 +9,7 @@ module.exports = {
     dmPermission: false,
     permission: Discord.PermissionFlagsBits.ModerateMembers,
     category: "Modération",
+    syntax: "unmute <membre> [raison]",
     options: [
         {
             type: "user",

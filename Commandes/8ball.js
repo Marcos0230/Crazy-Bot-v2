@@ -9,6 +9,7 @@ module.exports = {
     dmPermission: true,
     permission: "Aucune",
     category: "Fun",
+    syntax: "8ball <question>",
     options: [
         {
             type: "string",

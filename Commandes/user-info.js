@@ -8,6 +8,7 @@ module.exports = {
     permission: "Aucune",
     dmPermission: false,
     category: "Utilitaire",
+    syntax: "user-info [membre]",
     options: [
         {
             type: "user",

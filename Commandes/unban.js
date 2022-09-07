@@ -8,6 +8,7 @@ module.exports = {
     dmPermission: false,
     permission: Discord.PermissionFlagsBits.BanMembers,
     category: "Modération",
+    syntax: "unban <membre> [raison]",
     options: [
         {
             type: "user",

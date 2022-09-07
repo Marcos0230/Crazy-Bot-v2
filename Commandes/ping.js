@@ -7,6 +7,7 @@ module.exports = {
     dmPermission: true,
     permission: "Aucune",
     category: "Utilitaire",
+    syntax: "ping",
 
     async run(client, message) {
         const pingEmbed = new EmbedBuilder()

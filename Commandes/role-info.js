@@ -8,6 +8,7 @@ module.exports = {
     permission: "Aucune",
     dmPermission: false,
     category: "Utilitaire",
+    syntax: "role-info [role]",
     options: [
         {
             type: "role",

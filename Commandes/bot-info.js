@@ -8,6 +8,7 @@ module.exports = {
     dmPermission: true,
     permission: "Aucune",
     category: "Utilitaire",
+    syntax: "bot-info",
 
     async run(client, message) {
         let days = Math.floor(client.uptime / 86400000);

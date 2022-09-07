@@ -9,6 +9,7 @@ module.exports = {
     dmPermission: false,
     permission: Discord.PermissionFlagsBits.ModerateMembers,
     category: "Modération",
+    syntax: "mute <membre> <temps> [raison]",
     options: [
         {
         type: "user",
