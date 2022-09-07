@@ -7,6 +7,7 @@ module.exports = {
     description: "Permet de connaître des infos sur le bot",
     dmPermission: true,
     permission: "Aucune",
+    category: "Utilitaire",
 
     async run(client, message) {
         let days = Math.floor(client.uptime / 86400000);

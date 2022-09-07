@@ -16,7 +16,7 @@ client.on('ready', () => {
     const statuses = [
         'mon développeur : 🦄𝐋𝐞𝐆𝐚𝐫𝐬𝐅𝐨𝐮🌈#0230',
         'mon prefix : c.',
-        'ma version : 2.0.3'
+        'ma version : 2.0.4'
     ]
     let i = 0;
     /*client.user.setPresence({

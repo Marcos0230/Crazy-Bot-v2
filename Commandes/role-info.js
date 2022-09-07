@@ -4,9 +4,10 @@ const config = require("../config.json");
 
 module.exports = {
     name: "role-info",
-    description: "Permet de savoir les informations de la personne mentioner !",
+    description: "Permet de savoir les informations de la personne mentioner",
     permission: "Aucune",
     dmPermission: false,
+    category: "Utilitaire",
     options: [
         {
             type: "role",

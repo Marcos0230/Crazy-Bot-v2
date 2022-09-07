@@ -6,6 +6,7 @@ module.exports = {
     description: "Permet de voir le ping du bot",
     dmPermission: true,
     permission: "Aucune",
+    category: "Utilitaire",
 
     async run(client, message) {
         const pingEmbed = new EmbedBuilder()

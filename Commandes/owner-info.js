@@ -6,6 +6,7 @@ module.exports = {
     description: "Permet de connaître des infos sur le créateur du bot",
     dmPermission: true,
     permission: "Aucune",
+    category: "Utilitaire",
 
     async run(client, message) {
         const owner = client.users.cache.get("588381876989853697");

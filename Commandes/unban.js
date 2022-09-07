@@ -7,6 +7,7 @@ module.exports = {
     description: "Permet de révoquer le unbanissement un membre",
     dmPermission: false,
     permission: Discord.PermissionFlagsBits.BanMembers,
+    category: "Modération",
     options: [
         {
             type: "user",

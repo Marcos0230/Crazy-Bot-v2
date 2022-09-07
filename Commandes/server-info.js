@@ -4,9 +4,10 @@ const config = require("../config.json");
 
 module.exports = {
     name: "server-info",
-    description: "Permet de savoir les informations du serveur où est executé la commande !",
+    description: "Permet de savoir les informations du serveur où est executé la commande",
     permission: "Aucune",
     dmPermission: false,
+    category: "Utilitaire",
 
     async run(client, message, args) {
         const serverInfoEmbed = new EmbedBuilder()

@@ -7,6 +7,7 @@ module.exports = {
     description: "Permet de supprimer un nombre de messages",
     dmPermission: false,
     permission: Discord.PermissionFlagsBits.ManageMessages,
+    category: "Modération",
     options: [
         {
             type: "number",

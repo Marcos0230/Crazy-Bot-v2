@@ -6,6 +6,7 @@ module.exports = { // exporte la commande uptime
     description: 'Permet de connaître le uptime du bot', // description de la commande
     permission: 'Aucune', // permission nécessaire pour exécuter la commande
     dmPermission: true, // permission nécessaire pour exécuter la commande en message privé
+    category: 'Utilitaire', // catégorie de la commande
 
     async run(client, message) { // execute la commande uptime
         let days = Math.floor(client.uptime / 86400000); // calcule le nombre de jours

@@ -8,6 +8,7 @@ module.exports = {
     description: "Permet de poser une question (fermée) à la boule magique",
     dmPermission: true,
     permission: "Aucune",
+    category: "Fun",
     options: [
         {
             type: "string",
