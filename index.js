@@ -8,9 +8,14 @@ const token = require('./token.json');
 
 client.commands = new Discord.Collection();
 
-client.login(token.token) // On se connecte au bot
-loadCommands(client); // On charge les commandes
-loadEvents(client); // On charge les events
+try {
+    client.login(token.token) // On se connecte au bot
+    loadCommands(client); // On charge les commandes
+    loadEvents(client); // On charge les events
+} catch (err) {
+    console.log(err);
+}
+
 
 client.on('ready', () => {
     const statuses = [
