@@ -15,18 +15,21 @@ module.exports = {
         type: "user",
         name: "membre",
         description: "Le membre à mute",
-        required: true
+        required: true,
+        autocomplete: false
         }, {
         type: "string",
         name: "temps",
         description: "Le temps de mute",
-        required: true
+        required: true,
+        autocomplete: false
         },
         {
         type: "string",
         name: "raison",
         description: "La raison du mute",
-        required: false
+        required: false,
+        autocomplete: false
         }
     ],
 
