@@ -14,8 +14,7 @@ module.exports = {
             type: "role",
             name: "role",
             description: "Le rôle à mentioner",
-            required: true,
-            autocomplete: false
+            required: true
         },
     ],
 

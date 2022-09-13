@@ -14,14 +14,12 @@ module.exports = {
             type: "user",
             name: "membre",
             description: "Le membre à bannir",
-            required: true,
-            autocomplete: false
+            required: true
         }, {
             type: "string",
             name: "raison",
             description: "La raison du ban",
-            required: false,
-            autocomplete: false
+            required: false
         }
     ],
     async run(client, message, args) {

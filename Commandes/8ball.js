@@ -15,8 +15,7 @@ module.exports = {
             type: "string",
             name: "question",
             description: "La question à poser",
-            required: true,
-            autocomplete: false
+            required: true
         }
     ],
 

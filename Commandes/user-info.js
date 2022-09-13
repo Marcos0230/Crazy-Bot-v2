@@ -14,8 +14,7 @@ module.exports = {
             type: "user",
             name: "member",
             description: "Le membre a mentioner",
-            required: true,
-            autocomplete: false
+            required: true
         },
     ],
 

@@ -12,24 +12,20 @@ module.exports = {
     syntax: "mute <membre> <temps> [raison]",
     options: [
         {
-        type: "user",
-        name: "membre",
-        description: "Le membre à mute",
-        required: true,
-        autocomplete: false
+            type: "user",
+            name: "membre",
+            description: "Le membre à mute",
+            required: true
         }, {
-        type: "string",
-        name: "temps",
-        description: "Le temps de mute",
-        required: true,
-        autocomplete: false
-        },
-        {
-        type: "string",
-        name: "raison",
-        description: "La raison du mute",
-        required: false,
-        autocomplete: false
+            type: "string",
+            name: "temps",
+            description: "Le temps de mute",
+            required: true
+        }, {
+            type: "string",
+            name: "raison",
+            description: "La raison du mute",
+            required: false
         }
     ],
 
@@ -74,7 +70,7 @@ module.exports = {
             .setFooter({text: "Commande : mute", iconURL: client.user.displayAvatarURL({dynamic: true})})
             .setTimestamp()
             .setThumbnail(config.error_gif);
-        if(ms(time) > 86400000) {
+        if (ms(time) > 86400000) {
             return message.reply({embeds: [too_long_time]});
         }
 
@@ -145,7 +141,10 @@ module.exports = {
                 .setColor("#ffff00")
                 .setTitle("Information")
                 .setDescription(`**${message.user}** a mute **${user.tag}** pendant **${time}** pour la raison suivante : **${reason}**\n\nLe membre n'a pas pu être informé de son mute !`)
-                .setFooter({text: `Commande effectuée par ${message.author.username}`, iconURL: message.author.avatarURL({dynamic: true})})
+                .setFooter({
+                    text: `Commande effectuée par ${message.author.username}`,
+                    iconURL: message.author.avatarURL({dynamic: true})
+                })
                 .setTimestamp()
                 .setThumbnail(config.error_gif);
             await message.reply({embeds: [no_dm]});

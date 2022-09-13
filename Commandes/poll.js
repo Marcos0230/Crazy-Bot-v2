@@ -13,14 +13,12 @@ module.exports = {
             type: "string",
             name: "question",
             description: "La question du sondage",
-            required: true,
-            autocomplete: false
+            required: true
         }, {
             type: "string",
             name: "choix",
             description: "Le(s) choix du sondage",
-            required: true,
-            autocomplete: false
+            required: true
         }
     ],
 

@@ -15,8 +15,7 @@ module.exports = {
             type: "user",
             name: "membre",
             description: "Le membre à qui vous voulez connaître le pourcentage d'amour",
-            required: true,
-            autocomplete: false
+            required: true
         }
     ],
 
