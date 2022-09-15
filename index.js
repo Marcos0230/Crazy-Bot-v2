@@ -4,9 +4,17 @@ const intents = new Discord.IntentsBitField(3276799);
 const client = new Discord.Client({intents});
 const loadCommands = require('./Loader/loadCommands.js');
 const loadEvents = require('./Loader/loadEvents');
+const loadDatabase = require('./Loader/loadDatabase');
 const token = require('./token.json');
 
 client.commands = new Discord.Collection();
+
+try {
+    client.db = loadDatabase();
+    console.log("Base de données chargée avec succès !");
+} catch (error) {
+    console.log(error);
+}
 
 try {
     client.login(token.token) // On se connecte au bot
