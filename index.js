@@ -8,6 +8,9 @@ const loadDatabase = require('./Loader/loadDatabase');
 const token = require('./token.json');
 
 client.commands = new Discord.Collection();
+client.function = {
+    createID: require('./Fonctions/createID.js'),
+};
 
 try {
     client.db = loadDatabase();
