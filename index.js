@@ -6,6 +6,7 @@ const loadCommands = require('./Loader/loadCommands.js');
 const loadEvents = require('./Loader/loadEvents');
 const loadDatabase = require('./Loader/loadDatabase');
 const token = require('./token.json');
+const db = require('./db.json');
 
 client.commands = new Discord.Collection();
 client.function = {

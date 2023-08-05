@@ -1,4 +1,8 @@
 {
   "prefix": "c.",
-  "error_gif": "https://cdn.discordapp.com/attachments/738864387019767921/821457688172167198/Hnet.com-image.gif"
+  "error_gif": "https://cdn.discordapp.com/attachments/738864387019767921/821457688172167198/Hnet.com-image.gif",
+  "ticket": {
+    "category": "913083520891625472",
+    "roles": ["782174281567567873", "695201115075248218","695196794325303366"]
+  }
 }
