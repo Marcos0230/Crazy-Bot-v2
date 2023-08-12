@@ -62,7 +62,7 @@ module.exports = {
             const help_command = new Discord.EmbedBuilder()
                 .setColor("Random")
                 .setTitle(`Commande : ${command.name}`)
-                .setDescription(`Description : ${command.description}\nPermission : ${typeof command.permission !== "bigint" ? command.permission : new Discord.PermissionsBitField(command.permission).toArray(false)}\nCatégorie : ${command.category}\nSynthaxe : \`${command.syntax}\`\nPossibilité d'utiliser la commande en message privé : ${command.dmPermission ? "Oui" : "Non"}\nOptions : ${command.options ? command.options.map((option) => `\n- \`${option.name}\` : ${option.description}. ${option.required ? "Option obligatoire" : "Option optionnelle"}`) : "Aucune"}`)
+                .setDescription(`Description : ${command.description}\nPermission : ${typeof command.permission !== "bigint" ? command.permission : new Discord.PermissionsBitField(command.permission).toArray(false)}\nCatégorie : ${command.category}\nSynthaxe : \`${command.syntax}\`\nPossibilité d'utiliser la commande en message privé : ${command.dmPermission ? "Oui" : "Non"}\nArgument(s) : ${command.options ? command.options.map((option) => `\n- \`${option.name}\` : ${option.description}. ${option.required ? "Argument obligatoire" : "Argument optionnel"}`) : "Aucune"}`)
                 .setFooter({text: "Commande : help", iconURL: client.user.displayAvatarURL({dynamic: true})})
                 .setTimestamp()
                 .setThumbnail(client.user.displayAvatarURL({dynamic: true}));
