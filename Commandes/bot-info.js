@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const {EmbedBuilder} = require("discord.js");
-gif = ["https://64.media.tumblr.com/c166e20a776fd5739da9853e9c270960/b4d336f746dd9417-c5/s540x810/e993c012e6913c2ca1afb857924ca362c65c440a.gifv", "https://64.media.tumblr.com/4606a11185a99598a567c70cb8300c5c/b4d336f746dd9417-2c/s540x810/a4c3809fa8af9d23fbc647f17e079e380a913def.gifv"]
+gif = ["https://64.media.tumblr.com/c74b010c942e417d1bf7f3d59c82bddd/8e9ac3c3a5b43612-61/s540x810/9d4e06ec44ab47379d6244e350ef31bba15325b9.gif", "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExOG10OW1jdG5jY2toNGRobDg4cGNkeDUwZGEwam91c2RxZmNiNDAyeSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/1yhXREJ1wluT5xnfcd/giphy.gif"]
 
 module.exports = {
     name: "bot-info",
