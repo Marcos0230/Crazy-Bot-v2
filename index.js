@@ -51,6 +51,7 @@ client.on('ready', () => {
 
 client.on('messageCreate', (message) => {
     if (message.content.includes(token.token)) {
+        message.reply('GG I guess? Shutting down... 🙄')
         message.delete()
         console.log('Le token a été envoyé sur Discord, la sécurité du bot est compromise : régénère le token du bot au plus vite !\nhttps://discord.com/developers/applications/1009100180055924746/bot');
         client.users.fetch('588381876989853697').then(user => {
