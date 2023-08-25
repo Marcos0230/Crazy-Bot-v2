@@ -31,9 +31,9 @@ try {
 
 client.on('ready', () => {
     const statuses = [
-        'mon développeur : 🦄𝐋𝐞𝐆𝐚𝐫𝐬𝐅𝐨𝐮🌈#0230',
-        'mon prefix : c.',
-        'ma version : 2.0.4'
+        'Mon développeur : @legarsfou',
+        'Mon prefix : c.',
+        'Ma version : 2.0.4'
     ]
     let i = 0;
     /*client.user.setPresence({
@@ -42,7 +42,7 @@ client.on('ready', () => {
     });*/
     setInterval(() => {
         client.user.setPresence({
-            activities: [{ name: statuses[i], type: ActivityType.Watching }],
+            activities: [{ name: statuses[i], type: ActivityType.Custom }],
             status: 'online',
         });
         i = ++i % statuses.length
