@@ -99,7 +99,7 @@ module.exports = {
                 .setColor("#ffff00")
                 .setTitle("Information")
                 .setDescription(`**${message.user}** a kick **${user.tag}** pour la raison suivante : **${reason}** !\n\nLe membre n'a pas pu être informé de son expulsion par message privé.`)
-                .setFooter({text: `Commande effectuée par ${message.author.username}`, iconURL: message.author.avatarURL({dynamic: true})})
+                .setFooter({text: "Commande : kick", iconURL: client.user.displayAvatarURL({dynamic: true})})
                 .setTimestamp()
                 .setThumbnail(config.error_gif);
             message.reply({embeds: [no_dm]});
@@ -109,7 +109,7 @@ module.exports = {
             .setColor("#00ff00")
             .setTitle("Expulsion")
             .setDescription(`**${message.user}** a kick **${user.tag}** pour la raison suivante : **${reason}**`)
-            .setFooter({text: `Commande effectuée par ${message.author.username}`, iconURL: message.author.avatarURL({dynamic: true})})
+            .setFooter({text: "Commande : kick", iconURL: client.user.displayAvatarURL({dynamic: true})})
             .setTimestamp()
         await message.reply({embeds: [kick_confirmation]});
 

@@ -6,7 +6,7 @@ module.exports = async (client, interaction) => {
 
         if (interaction.commandName === "help") {
             let choices = client.commands.filter(cmd => cmd.name.includes(entry))
-            await interaction.respond(entry === "" ? client.commands.map(cmd => ({name : cmd.name, value : cmd.name})) : choices.map(choice => ({name : choice, value : choice})))
+            await interaction.respond(entry === "" ? client.commands.map(cmd => ({name : cmd.name, value : cmd.name})) : choices.map(choice => ({name : choice.name, value : choice.name})))
         }
 
     }
@@ -16,6 +16,6 @@ module.exports = async (client, interaction) => {
         if (!command || !interaction.commandName) {
             interaction.reply("Pas de commande renseignée ! / Commande inconnue !");
         }
-        else command.run(client, interaction, interaction.options);
+        else command.run(client, interaction, interaction.options, client.db);
     }
 }

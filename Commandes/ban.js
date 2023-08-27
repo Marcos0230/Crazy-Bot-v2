@@ -108,12 +108,13 @@ module.exports = {
                 .setColor("#ffff00")
                 .setTitle("Information")
                 .setDescription(`**${message.user}** a banni **${user.tag}** pour la raison suivante : **${reason}** !\n\nLe membre n'a pas pu être informé de son bannissement par message privé.`)
-                .setFooter({text: `Commande effectuée par ${message.author.username}`, iconURL: message.author.avatarURL({dynamic: true})})
+                .setFooter({text: "Commande : ban", iconURL: client.user.displayAvatarURL({dynamic: true})})
                 .setTimestamp()
                 .setThumbnail(config.error_gif);
             await message.reply({embeds: [no_dm]});
             return message.guild.bans.create(user.id, {reason: reason});
         }
+
         const ban_confirmation = new EmbedBuilder()
             .setColor("#00ff00")
             .setTitle("Bannissement")

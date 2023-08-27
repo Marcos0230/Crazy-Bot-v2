@@ -64,7 +64,7 @@ module.exports = {
                 .setColor("#ffff00")
                 .setTitle("Information")
                 .setDescription(`**${message.user}** a unban **${user.tag}** pour la raison suivante : **${reason} !**\n\nL'utilisateur(trice) n'a pas pu être informé de son débannissement par message privé.`)
-                .setFooter({text: `Commande effectuée par ${message.author.username}`, iconURL: message.author.avatarURL({dynamic: true})})
+                .setFooter({text: "Commande : unban", iconURL: client.user.displayAvatarURL({dynamic: true})})
                 .setTimestamp()
                 .setThumbnail(config.error_gif);
             await message.reply({embeds: [no_dm]});
