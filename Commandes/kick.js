@@ -45,7 +45,7 @@ module.exports = {
 
         let reason = args.getString("raison");
         if (!reason) {
-            reason = "Aucune raison donnée";
+            reason = "Aucune raison fournie";
         }
 
         const kick_yourself = new EmbedBuilder()

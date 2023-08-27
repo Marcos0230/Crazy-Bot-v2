@@ -43,7 +43,7 @@ module.exports = {
 
         let reason = args.getString("raison");
         if (!reason) {
-            reason = "Aucune raison donnée";
+            reason = "Aucune raison fournie";
         }
 
         const not_banned = new EmbedBuilder()

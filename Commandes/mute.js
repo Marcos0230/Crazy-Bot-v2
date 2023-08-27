@@ -79,7 +79,7 @@ module.exports = {
 
         let reason = args.getString("raison");
         if (!reason) {
-            reason = "Aucune raison donnée";
+            reason = "Aucune raison fournie";
         }
 
         const mute_yourself = new EmbedBuilder()
