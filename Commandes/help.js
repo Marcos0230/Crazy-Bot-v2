@@ -12,7 +12,8 @@ module.exports = {
             type: "string",
             name: "commande",
             description: "La commande dont vous souhaitez connaître les détails",
-            required: false
+            required: false,
+            autocomplete: true
         }
     ],
 

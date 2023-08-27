@@ -14,12 +14,14 @@ module.exports = {
             type: "user",
             name: "membre",
             description: "L'utilisateur à warn",
-            required: true
+            required: true,
+            autocomplete: false
         }, {
             type: "string",
             name: "raison",
             description: "La raison du warn",
-            required: true
+            required: true,
+            autocomplete: false
         }
     ],
 
