@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
-const {REST} = require('@discordjs/rest'); // require le module @discordjs/rest
-const {Routes} = require('discord.js'); // require le module discord.js
+const {REST} = require('@discordjs/rest');
+const {Routes} = require('discord.js');
 
 module.exports = async (client) => {
     let commands = [];
@@ -20,8 +20,8 @@ module.exports = async (client) => {
         }
         await commands.push(SlashCommands);
     });
-    const rest = new REST({version: "10"}).setToken(client.token); // crée un nouvel objet rest avec la version 10
+    const rest = new REST({version: "10"}).setToken(client.token);
 
-    await rest.put(Routes.applicationCommands(client.user.id), {body: commands}); // met à jour les commandes du bot sur le serveur Discord
-    console.log("Slash Commands créées avec succès !"); // affiche un message de succès
+    await rest.put(Routes.applicationCommands(client.user.id), {body: commands});
+    console.log("Slash Commands created successfully !");
 }

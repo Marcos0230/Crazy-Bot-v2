@@ -5,8 +5,8 @@ module.exports = async () => {
         host: 'localhost',
         user: 'root',
         password: '',
-        database: 'crazy_bot_db'
-    });
+        database: 'crazy_bot_v2_bdd'
+    })
 
     return db;
 }
