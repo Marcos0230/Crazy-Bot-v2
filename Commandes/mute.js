@@ -143,7 +143,7 @@ module.exports = {
             const no_dm = new EmbedBuilder()
                 .setColor("#ffff00")
                 .setTitle("Information")
-                .setDescription(`**${message.user}** a mute **${user.tag}** pendant **${time}** pour la raison suivante : **${reason}**\n\nLe membre n'a pas pu être informé de son mute !`)
+                .setDescription(`**${message.user}** a mute **${user.tag}** pendant **${time}** pour la raison suivante : **${reason}** !\n\nLe membre n'a pas pu être informé de son mute par message privé.`)
                 .setFooter({
                     text: `Commande effectuée par ${message.author.username}`,
                     iconURL: message.author.avatarURL({dynamic: true})

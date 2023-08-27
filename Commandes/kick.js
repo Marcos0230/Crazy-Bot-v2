@@ -98,7 +98,7 @@ module.exports = {
             const no_dm = new EmbedBuilder()
                 .setColor("#ffff00")
                 .setTitle("Information")
-                .setDescription(`**${message.user}** a kick **${user.tag}** pour la raison suivante : **${reason}**\n\nLe membre n'a pas pu être informé de son expulsion !`)
+                .setDescription(`**${message.user}** a kick **${user.tag}** pour la raison suivante : **${reason}** !\n\nLe membre n'a pas pu être informé de son expulsion par message privé.`)
                 .setFooter({text: `Commande effectuée par ${message.author.username}`, iconURL: message.author.avatarURL({dynamic: true})})
                 .setTimestamp()
                 .setThumbnail(config.error_gif);
