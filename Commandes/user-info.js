@@ -64,7 +64,7 @@ module.exports = {
             })
             .addFields({
                 name: "<:boost:1010519916601954404>  Date de début de boost",
-                value: `<t:${Math.floor(member.premiumSince / 1000)}:F>`,
+                value: `${member.premiumSince ? `<t:${Math.floor(member.premiumSince / 1000)}:F>` : "Ne boost pas le serveur"}`,
                 inline: true
             })
             .addFields({
