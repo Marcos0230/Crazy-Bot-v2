@@ -96,29 +96,28 @@ module.exports = {
         try {
             await member.send(`Vous avez été averti sur le serveur **${message.guild.name}** par **${message.author.tag}** pour la raison suivante : **${reason}**`);
         } catch (err) {
+            let ID = await client.function.createID("")
+
             const no_dm = new EmbedBuilder()
                 .setColor("#ffff00")
                 .setTitle("Information")
-                .setDescription(`**${message.user}** a averti **${user.tag}** pour la raison suivante : **${reason}** !\n\nLe membre n'a pas pu être informé de son avertissement par message privé.`)
+                .setDescription(`**${message.user}** a averti **${user.tag}** pour la raison suivante : **${reason}** !\nL'ID de l'avertissement est : **${ID}**\n\nLe membre n'a pas pu être informé de son avertissement par message privé.`)
                 .setFooter({text: "Commande : warn", iconURL: client.user.displayAvatarURL({dynamic: true})})
                 .setTimestamp()
                 .setThumbnail(config.error_gif);
             await message.reply({embeds: [no_dm]});
 
-            let ID = await client.function.createID("")
-
             return db.query(`INSERT INTO warns (guildID, userID, moderatorID, warnID, reason, timestamp) VALUES ('${message.guild.id}', '${user.id}', '${message.user.id}', '${ID}', '${reason.replace(/'/g, "\\'")}', '${Date.now()}')`)
         }
+        let ID = await client.function.createID("")
 
         const warn_confirmation = new EmbedBuilder()
             .setColor("#00ff00")
             .setTitle("Avertissement")
-            .setDescription(`**${message.user}** a averti **${user.tag}** pour la raison suivante : **${reason}**`)
+            .setDescription(`**${message.user}** a averti **${user.tag}** pour la raison suivante : **${reason}**\nL'ID de l'avertissement est : **${ID}**`)
             .setFooter({text: "Commande : warn", iconURL: client.user.displayAvatarURL({dynamic: true})})
             .setTimestamp()
         await message.reply({embeds: [warn_confirmation]});
-
-        let ID = await client.function.createID("")
 
         db.query(`INSERT INTO warns (guildID, userID, moderatorID, warnID, reason, timestamp) VALUES ('${message.guild.id}', '${user.id}', '${message.user.id}', '${ID}', '${reason.replace(/'/g, "\\'")}', '${Date.now()}')`)
     }
