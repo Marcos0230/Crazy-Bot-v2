@@ -7,7 +7,7 @@ module.exports = {
     description: "Permet de savoir les informations de la personne mentioner",
     permission: "Aucune",
     dmPermission: false,
-    category: "Utilitaire",
+    category: "Serveur",
     syntax: "user-info [membre]",
     options: [
         {

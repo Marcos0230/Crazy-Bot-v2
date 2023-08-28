@@ -24,7 +24,7 @@ try {
 client.on('ready', () => {
     const statuses = [
         'Mon développeur : @legarsfou',
-        'Ma version : 2.6.0'
+        'Ma version : 2.6.1'
     ]
     let i = 0;
     /*client.user.setPresence({

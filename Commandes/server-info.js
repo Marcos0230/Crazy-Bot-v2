@@ -7,7 +7,7 @@ module.exports = {
     description: "Permet de savoir les informations du serveur où est executé la commande",
     permission: "Aucune",
     dmPermission: false,
-    category: "Utilitaire",
+    category: "Serveur",
     syntax: "server-info",
 
     async run(client, message, args) {

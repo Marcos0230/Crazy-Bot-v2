@@ -50,7 +50,7 @@ module.exports = {
             await categories.sort().forEach((category) => {
                 let commands = client.commands.filter((command) => command.category === category);
                 help_commands.addFields({
-                    name: `${category}`,
+                    name: `• ${category}`,
                     value: `${commands.map((command) => `\`/${command.name}\` : ${command.description}`).join("\n")}`,
                 });
             });

@@ -7,7 +7,7 @@ module.exports = {
     description: "Permet de connaître des infos sur le bot",
     dmPermission: true,
     permission: "Aucune",
-    category: "Utilitaire",
+    category: "Information",
     syntax: "bot-info",
 
     async run(client, message) {

@@ -7,7 +7,7 @@ module.exports = {
     description: "Permet de connaître des infos sur l'OS du bot",
     dmPermission: true,
     permission: "Aucune",
-    category: "Utilitaire",
+    category: "Information",
     syntax: "os",
 
     async run(client, message) {
