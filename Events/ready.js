@@ -6,7 +6,8 @@ module.exports = async (client) => {
     await loadSlashCommands(client);
 
     client.db = await loadDatabase();
-    client.db.connect(function () {
+    client.db.connect(function (err) {
+        if (err) console.log(err);
         console.log("Database loaded successfully !");
     })
 
