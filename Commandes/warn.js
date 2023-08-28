@@ -105,7 +105,7 @@ module.exports = {
                 .setThumbnail(config.error_gif);
             await message.reply({embeds: [no_dm]});
 
-            let ID = await client.function.createID("WARN")
+            let ID = await client.function.createID("")
 
             return db.query(`INSERT INTO warns (guildID, userID, moderatorID, warnID, reason, timestamp) VALUES ('${message.guild.id}', '${user.id}', '${message.user.id}', '${ID}', '${reason.replace(/'/g, "\\'")}', '${Date.now()}')`)
         }
@@ -118,7 +118,7 @@ module.exports = {
             .setTimestamp()
         await message.reply({embeds: [warn_confirmation]});
 
-        let ID = await client.function.createID("WARN")
+        let ID = await client.function.createID("")
 
         db.query(`INSERT INTO warns (guildID, userID, moderatorID, warnID, reason, timestamp) VALUES ('${message.guild.id}', '${user.id}', '${message.user.id}', '${ID}', '${reason.replace(/'/g, "\\'")}', '${Date.now()}')`)
     }

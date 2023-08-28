@@ -5,5 +5,5 @@ module.exports = async prefix => {
         ID.push(characters[Math.floor(Math.random() * characters.length)]);
     }
 
-    return `${prefix}-${ID.join("")}`;
+    return `${ID.join("")}`;
 }
