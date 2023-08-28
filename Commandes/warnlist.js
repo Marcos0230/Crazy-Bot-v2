@@ -64,7 +64,7 @@ module.exports = {
                 warnlist.addFields(
                     [{
                             name: `Avertissement n°${i + 1}`,
-                            value: `- **Modérateur** : ${(await client.users.fetch(req[i].moderatorID)).tag}\n- **ID du warn** : ${req[i].warnID}\n- **Raison** : ${req[i].reason}\n- **Date** : <t:${Math.floor(parseInt(req[i].timestamp) / 1000)}:F>`,
+                            value: `- **Modérateur** : ${(await client.users.fetch(req[i].moderatorID)).tag} (${req[i].moderatorID})\n- **ID du warn** : ${req[i].warnID}\n- **Raison** : ${req[i].reason}\n- **Date** : <t:${Math.floor(parseInt(req[i].timestamp) / 1000)}:F>`,
                             inline: false
                         }]
                 )
