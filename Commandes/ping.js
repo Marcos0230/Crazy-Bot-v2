@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const {EmbedBuilder} = require("discord.js");
+const ws = require("ws");
 
 module.exports = {
     name: "ping",
@@ -9,14 +10,21 @@ module.exports = {
     category: "Information",
     syntax: "ping",
 
-    async run(client, message) {
-        const pingEmbed = new EmbedBuilder()
-            .setTitle("Ping")
-            .setDescription(`Pong ! 🏓\n\nLe ping du bot est de \`${client.ws.ping}ms\``)
+    async run(client, interaction) {
+        await interaction.deferReply();
+
+        const reply = await interaction.fetchReply();
+
+        const ping = reply.createdTimestamp - interaction.createdTimestamp;
+
+        const embed = new EmbedBuilder()
+            .setTitle("Pong 🏓 !")
+            .setDescription(`Ping : \`${ping}ms\``)
             .setColor("Random")
             .setTimestamp()
-            .setThumbnail("https://c.tenor.com/UnFx-k_lSckAAAAM/amalie-steiness.gif")
-            .setFooter({text: "Commande : ping", iconURL: client.user.displayAvatarURL({dynamic: true})});
-        await message.reply({embeds: [pingEmbed]});
+            .setThumbnail("https://i.pinimg.com/originals/2c/5e/b4/2c5eb476123b15552bef158f90a86fd6.gif")
+            .setFooter({text: "Commande : ping", iconURL: client.user.displayAvatarURL({dynamic: true})})
+
+        await interaction.editReply({embeds: [embed]});
     }
 }

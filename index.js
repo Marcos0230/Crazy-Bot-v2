@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const { ActivityType } = require('discord.js');
+const {ActivityType} = require('discord.js');
 const intents = new Discord.IntentsBitField(3276799);
 const client = new Discord.Client({intents});
 const loadCommands = require('./Loader/loadCommands.js');
@@ -24,7 +24,7 @@ try {
 client.on('ready', () => {
     const statuses = [
         'Mon développeur : @legarsfou',
-        'Ma version : 2.7.0',
+        'Ma version : 2.8.0',
     ]
     let i = 0;
     /*client.user.setPresence({
@@ -33,7 +33,7 @@ client.on('ready', () => {
     });*/
     setInterval(() => {
         client.user.setPresence({
-            activities: [{ name: statuses[i], type: ActivityType.Custom }],
+            activities: [{name: statuses[i], type: ActivityType.Custom}],
             status: 'online',
         });
         i = ++i % statuses.length
