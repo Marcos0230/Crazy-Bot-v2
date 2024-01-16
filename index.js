@@ -5,7 +5,6 @@ const client = new Discord.Client({intents});
 const loadCommands = require('./Loader/loadCommands.js');
 const loadEvents = require('./Loader/loadEvents.js');
 const token = require('./token.json');
-const os = require('os');
 
 client.commands = new Discord.Collection();
 client.function = {
@@ -24,7 +23,7 @@ try {
 client.on('ready', () => {
     const statuses = [
         'Mon développeur : @legarsfou',
-        'Ma version : 2.8.0',
+        'Ma version : 2.8.1',
     ]
     let i = 0;
     /*client.user.setPresence({

@@ -1,6 +1,5 @@
 const Discord = require("discord.js");
 const {EmbedBuilder} = require("discord.js");
-const ws = require("ws");
 gif = ["https://64.media.tumblr.com/c74b010c942e417d1bf7f3d59c82bddd/8e9ac3c3a5b43612-61/s540x810/9d4e06ec44ab47379d6244e350ef31bba15325b9.gif", "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExOG10OW1jdG5jY2toNGRobDg4cGNkeDUwZGEwam91c2RxZmNiNDAyeSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/1yhXREJ1wluT5xnfcd/giphy.gif"]
 
 module.exports = {
