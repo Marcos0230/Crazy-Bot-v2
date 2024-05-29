@@ -158,6 +158,36 @@ module.exports = {
             .setTimestamp()
         await message.reply({embeds: [mute_confirmation]});
 
+        const logs_message = new EmbedBuilder()
+            .setAuthor({
+                name: `[MUTE] ${member.user.tag}`,
+                iconURL: member.user.displayAvatarURL()
+            })
+            .addFields({
+                name: `Utilisateur`,
+                value: `member`,
+                inline: true
+            })
+            .addFields({
+                name: `Modérateur`,
+                value: message.user.globalName,
+                inline: true
+            })
+            .addFields({
+                name: `Raison`,
+                value: reason,
+                inline: true
+            })
+            .addFields({
+                name: `Durée`,
+                value: time,
+                inline: true
+            })
+            .setColor('#ff0000')
+            .setTimestamp()
+
+        await message.guild.channels.cache.get(config.logs_channel).send({embeds: [logs_message]});
+
         await member.timeout(ms(time), reason);
     }
 }
