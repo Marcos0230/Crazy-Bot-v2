@@ -68,6 +68,32 @@ module.exports = {
                 .setTimestamp()
                 .setThumbnail(config.error_gif);
             await message.reply({embeds: [no_dm]});
+
+            const logs_message = new EmbedBuilder()
+                .setAuthor({
+                    name: `[UNBAN] ${member.user.tag}`,
+                    iconURL: member.user.displayAvatarURL()
+                })
+                .addFields({
+                    name: `Utilisateur`,
+                    value: `<@${member.user.id}>`,
+                    inline: true
+                })
+                .addFields({
+                    name: `Modérateur`,
+                    value: `<@${message.user.id}>`,
+                    inline: true
+                })
+                .addFields({
+                    name: `Raison`,
+                    value: reason,
+                    inline: true
+                })
+                .setColor('Random')
+                .setTimestamp()
+
+            await message.guild.channels.cache.get(config.logs_channel).send({embeds: [logs_message]});
+
             return await message.guild.members.unban(user.id, reason);
         }
         const unban_confirmation = new EmbedBuilder()
@@ -77,6 +103,31 @@ module.exports = {
             .setFooter({text: "Commande : unban", iconURL: client.user.displayAvatarURL({dynamic: true})})
             .setTimestamp()
         await message.reply({embeds: [unban_confirmation]});
+
+        const logs_message = new EmbedBuilder()
+            .setAuthor({
+                name: `[UNBAN] ${member.user.tag}`,
+                iconURL: member.user.displayAvatarURL()
+            })
+            .addFields({
+                name: `Utilisateur`,
+                value: `<@${member.user.id}>`,
+                inline: true
+            })
+            .addFields({
+                name: `Modérateur`,
+                value: `<@${message.user.id}>`,
+                inline: true
+            })
+            .addFields({
+                name: `Raison`,
+                value: reason,
+                inline: true
+            })
+            .setColor('Random')
+            .setTimestamp()
+
+        await message.guild.channels.cache.get(config.logs_channel).send({embeds: [logs_message]});
 
         await message.guild.members.unban(user.id, reason);
     }

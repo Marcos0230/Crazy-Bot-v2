@@ -103,6 +103,32 @@ module.exports = {
                 .setTimestamp()
                 .setThumbnail(config.error_gif);
             message.reply({embeds: [no_dm]});
+
+            const logs_message = new EmbedBuilder()
+                .setAuthor({
+                    name: `[KICK] ${member.user.tag}`,
+                    iconURL: member.user.displayAvatarURL()
+                })
+                .addFields({
+                    name: `Utilisateur`,
+                    value: `<@${member.user.id}>`,
+                    inline: true
+                })
+                .addFields({
+                    name: `Modérateur`,
+                    value: `<@${message.user.id}>`,
+                    inline: true
+                })
+                .addFields({
+                    name: `Raison`,
+                    value: reason,
+                    inline: true
+                })
+                .setColor('Random')
+                .setTimestamp()
+
+            await message.guild.channels.cache.get(config.logs_channel).send({embeds: [logs_message]});
+
             return member.kick(reason)
         }
         const kick_confirmation = new EmbedBuilder()
@@ -112,6 +138,31 @@ module.exports = {
             .setFooter({text: "Commande : kick", iconURL: client.user.displayAvatarURL({dynamic: true})})
             .setTimestamp()
         await message.reply({embeds: [kick_confirmation]});
+
+        const logs_message = new EmbedBuilder()
+            .setAuthor({
+                name: `[KICK] ${member.user.tag}`,
+                iconURL: member.user.displayAvatarURL()
+            })
+            .addFields({
+                name: `Utilisateur`,
+                value: `<@${member.user.id}>`,
+                inline: true
+            })
+            .addFields({
+                name: `Modérateur`,
+                value: `<@${message.user.id}>`,
+                inline: true
+            })
+            .addFields({
+                name: `Raison`,
+                value: reason,
+                inline: true
+            })
+            .setColor('Random')
+            .setTimestamp()
+
+        await message.guild.channels.cache.get(config.logs_channel).send({embeds: [logs_message]});
 
         await member.kick(reason);
     }

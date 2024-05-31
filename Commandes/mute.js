@@ -148,6 +148,37 @@ module.exports = {
                 .setTimestamp()
                 .setThumbnail(config.error_gif);
             await message.reply({embeds: [no_dm]});
+
+            const logs_message = new EmbedBuilder()
+                .setAuthor({
+                    name: `[MUTE] ${member.user.tag}`,
+                    iconURL: member.user.displayAvatarURL()
+                })
+                .addFields({
+                    name: `Utilisateur`,
+                    value: user,
+                    inline: true
+                })
+                .addFields({
+                    name: `Modérateur`,
+                    value: `<@${message.user.id}>`,
+                    inline: true
+                })
+                .addFields({
+                    name: `Raison`,
+                    value: reason,
+                    inline: true
+                })
+                .addFields({
+                    name: `Durée`,
+                    value: time,
+                    inline: true
+                })
+                .setColor('Random')
+                .setTimestamp()
+
+            await message.guild.channels.cache.get(config.logs_channel).send({embeds: [logs_message]});
+
             return await member.timeout(ms(time), reason);
         }
         const mute_confirmation = new EmbedBuilder()
@@ -165,12 +196,12 @@ module.exports = {
             })
             .addFields({
                 name: `Utilisateur`,
-                value: `member`,
+                value: `<@${member.user.id}>`,
                 inline: true
             })
             .addFields({
                 name: `Modérateur`,
-                value: message.user.globalName,
+                value: `<@${message.user.id}>`,
                 inline: true
             })
             .addFields({

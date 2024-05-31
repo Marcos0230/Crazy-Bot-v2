@@ -107,6 +107,31 @@ module.exports = {
                 .setThumbnail(config.error_gif);
             await message.reply({embeds: [no_dm]});
 
+            const logs_message = new EmbedBuilder()
+                .setAuthor({
+                    name: `[WARN] ${member.user.tag}`,
+                    iconURL: member.user.displayAvatarURL()
+                })
+                .addFields({
+                    name: `Utilisateur`,
+                    value: `<@${member.user.id}>`,
+                    inline: true
+                })
+                .addFields({
+                    name: `Modérateur`,
+                    value: `<@${message.user.id}>`,
+                    inline: true
+                })
+                .addFields({
+                    name: `Raison`,
+                    value: reason,
+                    inline: true
+                })
+                .setColor('Random')
+                .setTimestamp()
+
+            await message.guild.channels.cache.get(config.logs_channel).send({embeds: [logs_message]});
+
             return db.query(`INSERT INTO warns (guildID, userID, moderatorID, warnID, reason, timestamp) VALUES ('${message.guild.id}', '${user.id}', '${message.user.id}', '${ID}', '${reason.replace(/'/g, "\\'")}', '${Date.now()}')`)
         }
         let ID = await client.function.createID("")
@@ -118,6 +143,31 @@ module.exports = {
             .setFooter({text: "Commande : warn", iconURL: client.user.displayAvatarURL({dynamic: true})})
             .setTimestamp()
         await message.reply({embeds: [warn_confirmation]});
+
+        const logs_message = new EmbedBuilder()
+            .setAuthor({
+                name: `[WARN] ${member.user.tag}`,
+                iconURL: member.user.displayAvatarURL()
+            })
+            .addFields({
+                name: `Utilisateur`,
+                value: `<@${member.user.id}>`,
+                inline: true
+            })
+            .addFields({
+                name: `Modérateur`,
+                value: `<@${message.user.id}>`,
+                inline: true
+            })
+            .addFields({
+                name: `Raison`,
+                value: reason,
+                inline: true
+            })
+            .setColor('Random')
+            .setTimestamp()
+
+        await message.guild.channels.cache.get(config.logs_channel).send({embeds: [logs_message]});
 
         db.query(`INSERT INTO warns (guildID, userID, moderatorID, warnID, reason, timestamp) VALUES ('${message.guild.id}', '${user.id}', '${message.user.id}', '${ID}', '${reason.replace(/'/g, "\\'")}', '${Date.now()}')`)
     }

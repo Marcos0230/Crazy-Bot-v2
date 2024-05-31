@@ -63,6 +63,26 @@ module.exports = {
                     .setThumbnail(config.error_gif);
 
                 message.reply({embeds: [success]});
+
+                const logs_message = new EmbedBuilder()
+                    .setAuthor({
+                        name: `[UNWARN] ${member.user.tag}`,
+                        iconURL: member.user.displayAvatarURL()
+                    })
+                    .addFields({
+                        name: `ID du warn`,
+                        value: warnID,
+                        inline: true
+                    })
+                    .addFields({
+                        name: `Modérateur`,
+                        value: `<@${message.user.id}>`,
+                        inline: true
+                    })
+                    .setColor('Random')
+                    .setTimestamp()
+
+                await message.guild.channels.cache.get(config.logs_channel).send({embeds: [logs_message]});
             })
         })
     }

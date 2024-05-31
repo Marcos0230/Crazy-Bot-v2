@@ -93,6 +93,32 @@ module.exports = {
                 .setTimestamp()
                 .setThumbnail(config.error_gif);
             await message.reply({embeds: [no_dm]});
+
+            const logs_message = new EmbedBuilder()
+                .setAuthor({
+                    name: `[UNMUTE] ${member.user.tag}`,
+                    iconURL: member.user.displayAvatarURL()
+                })
+                .addFields({
+                    name: `Utilisateur`,
+                    value: `<@${member.user.id}>`,
+                    inline: true
+                })
+                .addFields({
+                    name: `Modérateur`,
+                    value: `<@${message.user.id}>`,
+                    inline: true
+                })
+                .addFields({
+                    name: `Raison`,
+                    value: reason,
+                    inline: true
+                })
+                .setColor('Random')
+                .setTimestamp()
+
+            await message.guild.channels.cache.get(config.logs_channel).send({embeds: [logs_message]});
+
             return await member.timeout(null, reason);
         }
         const unmute_confirmation = new EmbedBuilder()
@@ -102,6 +128,31 @@ module.exports = {
             .setFooter({text: "Commande : unmute", iconURL: client.user.displayAvatarURL({dynamic: true})})
             .setTimestamp()
         await message.reply({embeds: [unmute_confirmation]});
+
+        const logs_message = new EmbedBuilder()
+            .setAuthor({
+                name: `[UNMUTE] ${member.user.tag}`,
+                iconURL: member.user.displayAvatarURL()
+            })
+            .addFields({
+                name: `Utilisateur`,
+                value: `<@${member.user.id}>`,
+                inline: true
+            })
+            .addFields({
+                name: `Modérateur`,
+                value: `<@${message.user.id}>`,
+                inline: true
+            })
+            .addFields({
+                name: `Raison`,
+                value: reason,
+                inline: true
+            })
+            .setColor('Random')
+            .setTimestamp()
+
+        await message.guild.channels.cache.get(config.logs_channel).send({embeds: [logs_message]});
 
         await member.timeout(null, reason);
     }
