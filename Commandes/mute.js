@@ -183,7 +183,7 @@ module.exports = {
                 value: time,
                 inline: true
             })
-            .setColor('#ff0000')
+            .setColor('Random')
             .setTimestamp()
 
         await message.guild.channels.cache.get(config.logs_channel).send({embeds: [logs_message]});

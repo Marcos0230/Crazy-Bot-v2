@@ -123,6 +123,31 @@ module.exports = {
             .setTimestamp()
         await message.reply({embeds: [ban_confirmation]});
 
+        const logs_message = new EmbedBuilder()
+            .setAuthor({
+                name: `[BAN] ${member.user.tag}`,
+                iconURL: member.user.displayAvatarURL()
+            })
+            .addFields({
+                name: `Utilisateur`,
+                value: `member`,
+                inline: true
+            })
+            .addFields({
+                name: `Modérateur`,
+                value: message.user.globalName,
+                inline: true
+            })
+            .addFields({
+                name: `Raison`,
+                value: reason,
+                inline: true
+            })
+            .setColor('Random')
+            .setTimestamp()
+
+        await message.guild.channels.cache.get(config.logs_channel).send({embeds: [logs_message]});
+
         await message.guild.bans.create(user.id, {reason: reason});
     }
 }
