@@ -9,8 +9,8 @@
   "author": "marcos0230_",
   "license": "ISC",
   "dependencies": {
-    "@discordjs/rest": "^2.6.1",
-    "discord.js": "^14.26.4",
+    "@discordjs/rest": "^2.6.3",
+    "discord.js": "^14.27.0",
     "fs": "^0.0.1-security",
     "ms": "^2.1.3",
     "mysql": "^2.18.1",
